@@ -38,6 +38,7 @@ class HardwareSerial{
 private:
     FILE *serialMonitor;
 public:
+    HardwareSerial();
     HardwareSerial(uint8_t*, uint8_t*, uint8_t*, uint8_t*, uint8_t*, uint8_t*);
     void begin(unsigned long baud){begin(baud, SERIAL_8N1);};
     void begin(unsigned long, uint8_t);
@@ -82,5 +83,7 @@ public:
 
     operator bool() {return true;}
 };
+
+extern HardwareSerial Serial;
 
 #endif

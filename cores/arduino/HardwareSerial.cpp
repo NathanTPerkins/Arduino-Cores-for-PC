@@ -1,5 +1,9 @@
 #include "HardwareSerial.h"
 
+HardwareSerial::HardwareSerial(){
+    this->serialMonitor = HardwareSerialFILE;
+}
+
 HardwareSerial::HardwareSerial(uint8_t* u1, uint8_t* u2, uint8_t* u3, uint8_t* u4, uint8_t* u5, uint8_t* u6){
     this->serialMonitor = HardwareSerialFILE;
 }
@@ -136,7 +140,7 @@ size_t HardwareSerial::printf(const char *format, ...){
     return 1;
 }
 
-
+HardwareSerial Serial;
 
 
 
