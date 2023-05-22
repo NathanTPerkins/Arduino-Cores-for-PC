@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <math.h>
+#include "HardwareSerial.h"
 
 #define HIGH 1
 #define LOW  0
