@@ -165,100 +165,100 @@ bool String::concat(double d){
 }
 
 String& operator+(const String& lhs, const String& rhs){
-    String s = String();
-    s._buffer = new char[lhs.length() + rhs.length() + 3];
-    s._len = lhs.length() + rhs.length();
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, rhs._buffer);
-    return s;
+    String* s = new String;
+    s->_buffer = new char[lhs.length() + rhs.length() + 3];
+    s->_len = lhs.length() + rhs.length();
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, rhs._buffer);
+    return *s;
 }
 
 String& operator+(const String& lhs, const char* rhs){
-    String s = String();
-    s._buffer = new char[lhs.length() + strlen(rhs) + 3];
-    s._len = lhs.length() + strlen(rhs);
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, rhs);
-    return s;
+    String* s = new String();
+    s->_buffer = new char[lhs.length() + strlen(rhs) + 3];
+    s->_len = lhs.length() + strlen(rhs);
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, rhs);
+    return *s;
 }
 
 String& operator+(const String& lhs, char rhs){
-    String s = String();
-    s._buffer = new char[lhs.length() + 4];
-    s._len = lhs.length() + 1;
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, &rhs);
-    return s;
+    String* s = new String();
+    s->_buffer = new char[lhs.length() + 4];
+    s->_len = lhs.length() + 1;
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, &rhs);
+    return *s;
 }
 
 String& operator+(const String& lhs, unsigned char rhs){
     String s_rhs = String(rhs);
-    String s = String();
-    s._buffer = new char[lhs.length() + s_rhs.length() + 3];
-    s._len = lhs.length() + s_rhs.length();
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, s_rhs._buffer);
-    return s;
+    String* s = new String();
+    s->_buffer = new char[lhs.length() + s_rhs.length() + 3];
+    s->_len = lhs.length() + s_rhs.length();
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, s_rhs._buffer);
+    return *s;
 }
 
 String& operator+(const String& lhs, int rhs){
     String s_rhs = String(rhs);
-    String s = String();
-    s._buffer = new char[lhs.length() + s_rhs.length() + 3];
-    s._len = lhs.length() + s_rhs.length();
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, s_rhs._buffer);
-    return s;
+    String* s = new String();
+    s->_buffer = new char[lhs.length() + s_rhs.length() + 3];
+    s->_len = lhs.length() + s_rhs.length();
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, s_rhs._buffer);
+    return *s;
 }
 
 String& operator+(const String& lhs, unsigned int rhs){
     String s_rhs = String(rhs);
-    String s = String();
-    s._buffer = new char[lhs.length() + s_rhs.length() + 3];
-    s._len = lhs.length() + s_rhs.length();
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, s_rhs._buffer);
-    return s;
+    String* s = new String();
+    s->_buffer = new char[lhs.length() + s_rhs.length() + 3];
+    s->_len = lhs.length() + s_rhs.length();
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, s_rhs._buffer);
+    return *s;
 }
 
 String& operator+(const String& lhs, long rhs){
     String s_rhs = String(rhs);
-    String s = String();
-    s._buffer = new char[lhs.length() + s_rhs.length() + 3];
-    s._len = lhs.length() + s_rhs.length();
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, s_rhs._buffer);
-    return s;
+    String* s = new String();
+    s->_buffer = new char[lhs.length() + s_rhs.length() + 3];
+    s->_len = lhs.length() + s_rhs.length();
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, s_rhs._buffer);
+    return *s;
 }
 
 String& operator+(const String& lhs, unsigned long rhs){
     String s_rhs = String(rhs);
-    String s = String();
-    s._buffer = new char[lhs.length() + s_rhs.length() + 3];
-    s._len = lhs.length() + s_rhs.length();
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, s_rhs._buffer);
-    return s;
+    String* s = new String();
+    s->_buffer = new char[lhs.length() + s_rhs.length() + 3];
+    s->_len = lhs.length() + s_rhs.length();
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, s_rhs._buffer);
+    return *s;
 }
 
 String& operator+(const String& lhs, float rhs){
     String s_rhs = String(rhs);
-    String s = String();
-    s._buffer = new char[lhs.length() + s_rhs.length() + 3];
-    s._len = lhs.length() + s_rhs.length();
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, s_rhs._buffer);
-    return s;
+    String* s = new String();
+    s->_buffer = new char[lhs.length() + s_rhs.length() + 3];
+    s->_len = lhs.length() + s_rhs.length();
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, s_rhs._buffer);
+    return *s;
 }
 
 String& operator+(const String& lhs, double rhs){
     String s_rhs = String(rhs);
-    String s = String();
-    s._buffer = new char[lhs.length() + s_rhs.length() + 3];
-    s._len = lhs.length() + s_rhs.length();
-    strcpy(s._buffer, lhs._buffer);
-    strcat(s._buffer, s_rhs._buffer);
-    return s;
+    String* s = new String();
+    s->_buffer = new char[lhs.length() + s_rhs.length() + 3];
+    s->_len = lhs.length() + s_rhs.length();
+    strcpy(s->_buffer, lhs._buffer);
+    strcat(s->_buffer, s_rhs._buffer);
+    return *s;
 }
 
 int String::compareTo(const String& s)const{
