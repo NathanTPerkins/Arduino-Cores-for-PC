@@ -35,43 +35,43 @@ String::String(char c){
 
 String::String(unsigned char c){
     this->_buffer = new char [1 + 8 * sizeof(unsigned char)];
-    sprintf(this->_buffer, "%d", c);
+    snprintf(this->_buffer,strlen(this->_buffer), "%d", c);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(int i){
     this->_buffer = new char [2 + 8 * sizeof(int)];
-    sprintf(this->_buffer, "%d", i);
+    snprintf(this->_buffer,strlen(this->_buffer), "%d", i);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(unsigned int i){
     this->_buffer = new char [2 + 8 * sizeof(unsigned int)];
-    sprintf(this->_buffer, "%u", i);
+    snprintf(this->_buffer,strlen(this->_buffer), "%u", i);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(long l){
     this->_buffer = new char [2 + 8 * sizeof(long)];
-    sprintf(this->_buffer, "%ld", l);
+    snprintf(this->_buffer,strlen(this->_buffer), "%ld", l);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(unsigned long l){
     this->_buffer = new char [2 + 8 * sizeof(unsigned long)];
-    sprintf(this->_buffer, "%lu", l);
+    snprintf(this->_buffer,strlen(this->_buffer), "%lu", l);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(float f){
     this->_buffer = new char [2 + 8 * sizeof(float)];
-    sprintf(this->_buffer, "%f", f);
+    snprintf(this->_buffer,strlen(this->_buffer), "%f", f);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(double d){
     this->_buffer = new char [2 + 8 * sizeof(double)];
-    sprintf(this->_buffer, "%lf", d);
+    snprintf(this->_buffer,strlen(this->_buffer), "%lf", d);
     this->_len = strlen(this->_buffer);
 }
 
