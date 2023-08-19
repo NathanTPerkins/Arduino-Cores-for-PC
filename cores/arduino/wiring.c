@@ -1,5 +1,8 @@
 #include <time.h>
 
+unsigned long millis();
+unsigned long micros();
+
 unsigned long _start_time_millis = 0;
 unsigned long _start_time_micros = 0;
 void init(){
