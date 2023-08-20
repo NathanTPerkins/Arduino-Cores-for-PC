@@ -7,6 +7,10 @@
 #include <math.h>
 #include "HardwareSerial.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define HIGH 1
 #define LOW  0
 
@@ -43,5 +47,9 @@ void delayMicroseconds(unsigned long);
 
 void setup();
 void loop();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
