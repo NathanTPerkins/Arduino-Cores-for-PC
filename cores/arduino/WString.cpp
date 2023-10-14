@@ -109,58 +109,68 @@ String& String::operator=(const String&& rVal){
 
 bool String::concat(const String& str){
     strcat(this->_buffer, str._buffer);
+    ++this->_len;
     return true;
 }
 
 bool String::concat(const char *str){
     strcat(this->_buffer, str);
+    ++this->_len;
     return true;
 }
 
 bool String::concat(char c){
     strcat(this->_buffer, &c);
+    ++this->_len;
     return true;
 }
 
 bool String::concat(unsigned char c){
     String s = String(c);
     strcat(this->_buffer, s._buffer);
+    ++this->_len;
     return true;
 }
 
 bool String::concat(int i){
     String s = String(i);
     strcat(this->_buffer, s._buffer);
+    ++this->_len;
     return true;
 }
 
 bool String::concat(unsigned int i){
     String s = String(i);
     strcat(this->_buffer, s._buffer);
+    ++this->_len;
     return true;
 }
 
 bool String::concat(long l){
     String s = String(l);
     strcat(this->_buffer, s._buffer);
+    ++this->_len;
     return true;
 }
 
 bool String::concat(unsigned long l){
     String s = String(l);
     strcat(this->_buffer, s._buffer);
+    ++this->_len;
     return true;
 }
 
 bool String::concat(float f){
     String s = String(f);
     strcat(this->_buffer, s._buffer);
+    ++this->_len;
     return true;
 }
 
 bool String::concat(double d){
     String s = String(d);
     strcat(this->_buffer, s._buffer);
+    ++this->_len;
     return true;
 }
 
