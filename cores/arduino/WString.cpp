@@ -2,63 +2,70 @@
 
 String::String(){
     this->_buffer = new char[1];
+    memset(this->_buffer, 0, 1);
     this->_len = 0;
 }
 
 String::String(const char *s){
     this->_buffer = new char[strlen(s) + 1];
     this->_len = strlen(s);
-
+    memset(this->_buffer, 0, strlen(s) + 1);
     strcpy(this->_buffer, s);
 }
 
 String::String(const String& s){
     this->_buffer = new char[s.length() + 1];
     this->_len = s.length();
-
+    memset(this->_buffer, 0, s.length() + 1);
     strcpy(this->_buffer, s._buffer);
 }
 
 String::String(const String&& s){
     this->_buffer = new char[s.length() + 1];
     this->_len = s.length();
-
+    memset(this->_buffer, 0, s.length() + 1);
     strcpy(this->_buffer, s._buffer);
 }
 
 String::String(char c){
-    this->_buffer = new char [2];
+    this->_buffer = new char [4];
+    memset(this->_buffer, 0, 4);
     this->_len = 1;
 
-    strcpy(this->_buffer, &c);
+    this->_buffer[0] = c;
 }
 
 String::String(unsigned char c){
     this->_buffer = new char [1 + 8 * sizeof(unsigned char)];
+    memset(this->_buffer, 0, 1 + 8 * sizeof(unsigned char));
     snprintf(this->_buffer,1 + 8 * sizeof(unsigned char), "%d", c);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(int i){
     this->_buffer = new char [2 + 8 * sizeof(int)];
+    memset(this->_buffer, 0, 2 + 8 * sizeof(int));
     snprintf(this->_buffer,2 + 8 * sizeof(int), "%d", i);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(unsigned int i){
     this->_buffer = new char [2 + 8 * sizeof(unsigned int)];
+    memset(this->_buffer, 0, 2 + 8 * sizeof(unsigned int));
     snprintf(this->_buffer,2 + 8 * sizeof(unsigned int), "%u", i);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(long l){
     this->_buffer = new char [2 + 8 * sizeof(long)];
+    memset(this->_buffer, 0, 2 + 8 * sizeof(long));
     snprintf(this->_buffer,2 + 8 * sizeof(long), "%ld", l);
     this->_len = strlen(this->_buffer);
 }
 
 String::String(unsigned long l){
     this->_buffer = new char [2 + 8 * sizeof(unsigned long)];
+    memset(this->_buffer, 0, 2 + 8 * sizeof(unsigned long));
     snprintf(this->_buffer,2 + 8 * sizeof(unsigned long), "%lu", l);
     this->_len = strlen(this->_buffer);
 }
@@ -71,6 +78,7 @@ String::String(float f){
 
 String::String(double d){
     this->_buffer = new char [2 + 8 * sizeof(double)];
+    memset(this->_buffer, 0, 2 + 8 * sizeof(double));
     snprintf(this->_buffer,2 + 8 * sizeof(double), "%lf", d);
     this->_len = strlen(this->_buffer);
 }
@@ -108,69 +116,119 @@ String& String::operator=(const String&& rVal){
 }
 
 bool String::concat(const String& str){
+    char * temp_buffer = new char[str.length() + strlen(this->_buffer) + 2];
+    memset(temp_buffer, 0, str.length() + strlen(this->_buffer) + 2);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, str._buffer);
-    ++this->_len;
+    this->_len += str.length();
     return true;
 }
 
 bool String::concat(const char *str){
+    char * temp_buffer = new char[strlen(str) + strlen(this->_buffer) + 2];
+    memset(temp_buffer, 0, strlen(str) + strlen(this->_buffer) + 2);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, str);
-    ++this->_len;
+    this->_len += strlen(str);
     return true;
 }
 
 bool String::concat(char c){
+    char * temp_buffer = new char[strlen(this->_buffer) + 3];
+    memset(temp_buffer, 0, strlen(this->_buffer) + 3);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, &c);
-    ++this->_len;
+    this->_len += 1;
     return true;
 }
 
 bool String::concat(unsigned char c){
     String s = String(c);
+    char * temp_buffer = new char[strlen(this->_buffer) + s.length() + 2];
+    memset(temp_buffer, 0, strlen(this->_buffer) + s.length() + 2);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, s._buffer);
-    ++this->_len;
+    this->_len += s.length();
     return true;
 }
 
 bool String::concat(int i){
     String s = String(i);
+    char * temp_buffer = new char[strlen(this->_buffer) + s.length() + 2];
+    memset(temp_buffer, 0, strlen(this->_buffer) + s.length() + 2);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, s._buffer);
-    ++this->_len;
+    this->_len += s.length();
     return true;
 }
 
 bool String::concat(unsigned int i){
     String s = String(i);
+    char * temp_buffer = new char[strlen(this->_buffer) + s.length() + 2];
+    memset(temp_buffer, 0, strlen(this->_buffer) + s.length() + 2);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, s._buffer);
-    ++this->_len;
+    this->_len += s.length();
     return true;
 }
 
 bool String::concat(long l){
     String s = String(l);
+    char * temp_buffer = new char[strlen(this->_buffer) + s.length() + 2];
+    memset(temp_buffer, 0, strlen(this->_buffer) + s.length() + 2);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, s._buffer);
-    ++this->_len;
+    this->_len += s.length();
     return true;
 }
 
 bool String::concat(unsigned long l){
     String s = String(l);
+    char * temp_buffer = new char[strlen(this->_buffer) + s.length() + 2];
+    memset(temp_buffer, 0, strlen(this->_buffer) + s.length() + 2);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, s._buffer);
-    ++this->_len;
+    this->_len += s.length();
     return true;
 }
 
 bool String::concat(float f){
     String s = String(f);
+    char * temp_buffer = new char[strlen(this->_buffer) + s.length() + 2];
+    memset(temp_buffer, 0, strlen(this->_buffer) + s.length() + 2);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, s._buffer);
-    ++this->_len;
+    this->_len += s.length();
     return true;
 }
 
 bool String::concat(double d){
     String s = String(d);
+    char * temp_buffer = new char[strlen(this->_buffer) + s.length() + 2];
+    memset(temp_buffer, 0, strlen(this->_buffer) + s.length() + 2);
+    strcpy(temp_buffer, this->_buffer);
+    delete [] this->_buffer;
+    this->_buffer = temp_buffer;
     strcat(this->_buffer, s._buffer);
-    ++this->_len;
+    this->_len += s.length();
     return true;
 }
 
